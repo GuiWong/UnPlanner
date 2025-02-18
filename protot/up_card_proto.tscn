@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhhrh4xnjofyl"]
+
+[ext_resource type="Texture2D" uid="uid://bwp7qthigvkdm" path="res://Ress/Card_Base.png" id="1_6oayd"]
+[ext_resource type="Script" path="res://protot/up_card_proto.gd" id="1_jquqw"]
+[ext_resource type="Texture2D" uid="uid://cp2ow3t3qqu03" path="res://Ress/ard_active.png" id="3_joo5w"]
+[ext_resource type="Texture2D" uid="uid://cb2fuk118w6jm" path="res://Ress/Icons2.png" id="4_emll7"]
+[ext_resource type="Texture2D" uid="uid://b2ecgwmt7qj4q" path="res://Ress/big_icon.png" id="4_pllld"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m4ydx"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="up_card_proto" type="Node2D"]
+script = ExtResource("1_jquqw")
+
+[node name="CardBase" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_6oayd")
+centered = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 64.0
+offset_bottom = 128.0
+texture_normal = ExtResource("1_6oayd")
+texture_pressed = ExtResource("1_6oayd")
+texture_hover = ExtResource("3_joo5w")
+texture_disabled = ExtResource("1_6oayd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 62.0
+offset_bottom = 25.0
+text = "Organize"
+label_settings = SubResource("LabelSettings_m4ydx")
+
+[node name="Icons" type="Sprite2D" parent="."]
+position = Vector2(32, 43)
+texture = ExtResource("4_emll7")
+hframes = 3
+vframes = 3
+frame = 1
+
+[node name="Icons2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 43)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_pllld")
+hframes = 2
+vframes = 2
+frame = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

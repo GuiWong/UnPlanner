@@ -1,0 +1,288 @@
+[gd_scene load_steps=22 format=3 uid="uid://ce5o8oj4m2u2x"]
+
+[ext_resource type="Texture2D" uid="uid://bqcbg2pi1blyy" path="res://Ress/monthprot.png" id="1_2x0qu"]
+[ext_resource type="Script" path="res://protot/test.gd" id="1_lrr5e"]
+[ext_resource type="Texture2D" uid="uid://byq7xna22ei88" path="res://Ress/day.png" id="2_50unw"]
+[ext_resource type="PackedScene" uid="uid://dxu85lt3cenoe" path="res://protot/card_prot.tscn" id="4_00m5n"]
+[ext_resource type="Texture2D" uid="uid://b2ecgwmt7qj4q" path="res://Ress/big_icon.png" id="6_2jf8t"]
+[ext_resource type="Texture2D" uid="uid://bwp7qthigvkdm" path="res://Ress/Card_Base.png" id="6_h4t2i"]
+[ext_resource type="PackedScene" uid="uid://c6joxtmer5fut" path="res://protot/draw_protot.tscn" id="7_satnv"]
+[ext_resource type="PackedScene" uid="uid://b0p7s7x6l7rcx" path="res://protot/proto_mouse_icon.tscn" id="8_8cgym"]
+[ext_resource type="PackedScene" uid="uid://c6pp1v2061p5y" path="res://protot/choice_window.tscn" id="10_15fau"]
+
+[sub_resource type="Gradient" id="Gradient_7o1jp"]
+colors = PackedColorArray(0.920995, 0.920995, 0.920995, 1, 0.830335, 0.830335, 0.830335, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_okhj8"]
+gradient = SubResource("Gradient_7o1jp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_56die"]
+font_size = 24
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qku76"]
+atlas = ExtResource("6_2jf8t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wx3c"]
+atlas = ExtResource("6_2jf8t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_711y3"]
+atlas = ExtResource("6_2jf8t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqnko"]
+font_size = 50
+font_color = Color(0.623529, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xt0w"]
+atlas = ExtResource("6_2jf8t")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtw4p"]
+atlas = ExtResource("6_2jf8t")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qy28"]
+atlas = ExtResource("6_2jf8t")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2ss0"]
+font_size = 50
+font_color = Color(1, 0, 1, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tma6l"]
+font_size = 30
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_lrr5e")
+
+[node name="Monthprot" type="Sprite2D" parent="."]
+position = Vector2(8, 112)
+texture = ExtResource("1_2x0qu")
+centered = false
+
+[node name="Day2" type="Sprite2D" parent="Monthprot"]
+visible = false
+position = Vector2(85, 0)
+texture = ExtResource("2_50unw")
+centered = false
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="TextureRect" type="TextureRect" parent="Monthprot"]
+visible = false
+offset_right = 597.0
+offset_bottom = 603.0
+texture = SubResource("GradientTexture1D_okhj8")
+
+[node name="Day" type="Sprite2D" parent="."]
+position = Vector2(-130, 61)
+texture = ExtResource("2_50unw")
+centered = false
+hframes = 3
+vframes = 2
+
+[node name="Cards" type="Node2D" parent="."]
+position = Vector2(8, 112)
+
+[node name="CardProt" parent="Cards" instance=ExtResource("4_00m5n")]
+position = Vector2(10, 20)
+
+[node name="CardProt2" parent="Cards" instance=ExtResource("4_00m5n")]
+position = Vector2(180, 20)
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(8, 112)
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_left = 77.0
+offset_top = -57.0
+offset_right = 108.0
+offset_bottom = -26.0
+color = Color(1, 0, 0, 1)
+
+[node name="ProtoUi" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Button" type="Button" parent="ProtoUi"]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 22.0
+offset_right = 685.0
+offset_bottom = 72.0
+text = "Next_day
+"
+
+[node name="Ener_ui" type="Control" parent="ProtoUi"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 32.0
+offset_right = 60.0
+offset_bottom = 72.0
+
+[node name="ProgressBar" type="ProgressBar" parent="ProtoUi/Ener_ui"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+offset_left = 69.0
+offset_top = -1.0
+offset_right = 197.0
+offset_bottom = 26.0
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProtoUi/Ener_ui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Energy:"
+
+[node name="Label2" type="Label" parent="ProtoUi/Ener_ui"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = -1.0
+offset_right = 197.0
+offset_bottom = 26.0
+text = "10"
+horizontal_alignment = 1
+
+[node name="Mon_ui" type="Control" parent="ProtoUi"]
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 32.0
+offset_right = 300.0
+offset_bottom = 32.0
+
+[node name="Label" type="Label" parent="ProtoUi/Mon_ui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Money:"
+
+[node name="Label2" type="Label" parent="ProtoUi/Mon_ui"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = -1.0
+offset_right = 177.0
+offset_bottom = 26.0
+text = "10"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="ProtoUi/Mon_ui"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = -7.0
+offset_right = 245.0
+offset_bottom = 27.0
+text = "$"
+label_settings = SubResource("LabelSettings_56die")
+
+[node name="Rem_ui" type="Control" parent="ProtoUi"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(720, 32)
+
+[node name="Erase_but" type="TextureButton" parent="ProtoUi/Rem_ui"]
+layout_mode = 1
+offset_left = 745.0
+offset_top = 2.0
+offset_right = 873.0
+offset_bottom = 130.0
+texture_normal = SubResource("AtlasTexture_qku76")
+texture_pressed = SubResource("AtlasTexture_7wx3c")
+texture_hover = SubResource("AtlasTexture_711y3")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ProtoUi/Rem_ui"]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 40.0
+offset_right = 956.0
+offset_bottom = 109.0
+text = "X 3
+"
+label_settings = SubResource("LabelSettings_vqnko")
+
+[node name="TextureButton2" type="TextureButton" parent="ProtoUi/Rem_ui"]
+layout_mode = 1
+offset_left = 992.0
+offset_top = 14.0
+offset_right = 1120.0
+offset_bottom = 142.0
+texture_normal = SubResource("AtlasTexture_8xt0w")
+texture_pressed = SubResource("AtlasTexture_xtw4p")
+texture_hover = SubResource("AtlasTexture_6qy28")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="ProtoUi/Rem_ui"]
+layout_mode = 0
+offset_left = 1126.0
+offset_top = 42.0
+offset_right = 1199.0
+offset_bottom = 111.0
+text = "X 3
+"
+label_settings = SubResource("LabelSettings_g2ss0")
+
+[node name="Active" type="Node2D" parent="."]
+position = Vector2(720, 170)
+scale = Vector2(2, 2)
+
+[node name="DeckArea" type="Node2D" parent="."]
+position = Vector2(660, 450)
+scale = Vector2(2, 2)
+
+[node name="CardBase" type="Sprite2D" parent="DeckArea"]
+texture = ExtResource("6_h4t2i")
+centered = false
+
+[node name="CardBase2" type="Sprite2D" parent="DeckArea"]
+position = Vector2(150, 0)
+texture = ExtResource("6_h4t2i")
+centered = false
+
+[node name="Label3" type="Label" parent="DeckArea"]
+offset_left = 69.5
+offset_top = 84.0
+offset_right = 149.5
+offset_bottom = 126.0
+text = "5/8
+"
+label_settings = SubResource("LabelSettings_tma6l")
+
+[node name="Label4" type="Label" parent="DeckArea"]
+offset_left = 219.5
+offset_top = 82.0
+offset_right = 299.5
+offset_bottom = 124.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_tma6l")
+
+[node name="Proto_mouse_icon" parent="." instance=ExtResource("8_8cgym")]
+visible = false
+position = Vector2(900, 255)
+scale = Vector2(2, 2)
+
+[node name="window_anchor" type="Node2D" parent="."]
+
+[node name="Draw_protot" parent="window_anchor" instance=ExtResource("7_satnv")]
+visible = false
+position = Vector2(645, 99)
+
+[node name="Choice_Window" parent="window_anchor" instance=ExtResource("10_15fau")]
+visible = false
+position = Vector2(645, 99)
+
+[connection signal="pressed" from="ProtoUi/Button" to="." method="test_player"]
+[connection signal="pressed" from="ProtoUi/Rem_ui/Erase_but" to="." method="_on_erase_but_pressed"]
+[connection signal="test" from="window_anchor/Draw_protot" to="." method="proto_draw"]

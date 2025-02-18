@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://biwv0ixy1qxuj"]
+
+[ext_resource type="Texture2D" uid="uid://c2bt376gn5egs" path="res://Ress/Windo2.png" id="1_uu1ur"]
+[ext_resource type="PackedScene" uid="uid://xnqmokdbhygb" path="res://node/ui/card_holder.tscn" id="2_utfan"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8yeo7"]
+line_spacing = 2.0
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Window" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 664.0
+offset_bottom = 547.0
+texture = ExtResource("1_uu1ur")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+modulate = Color(0.176419, 0.176419, 0.176419, 1)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 656.0
+offset_bottom = 312.0
+texture = ExtResource("1_uu1ur")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Card_Holder" parent="." instance=ExtResource("2_utfan")]
+position = Vector2(12, 16)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 307.0
+offset_right = 641.0
+offset_bottom = 544.0
+text = "Text Will go here
+Line 2
+3
+and 4
+5?"
+label_settings = SubResource("LabelSettings_8yeo7")
+horizontal_alignment = 1

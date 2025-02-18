@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6pp1v2061p5y"]
+
+[ext_resource type="Texture2D" uid="uid://c2bt376gn5egs" path="res://Ress/Windo2.png" id="1_7p1dk"]
+[ext_resource type="Script" path="res://protot/choice_window.gd" id="1_wts54"]
+[ext_resource type="PackedScene" uid="uid://dhhrh4xnjofyl" path="res://protot/up_card_proto.tscn" id="2_13ocl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kk4qg"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Choice_Window" type="Node2D"]
+script = ExtResource("1_wts54")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 592.0
+offset_bottom = 550.0
+texture = ExtResource("1_7p1dk")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Card_choice" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="up_card_proto" parent="Card_choice" instance=ExtResource("2_13ocl")]
+position = Vector2(16, 16)
+icon_index = 7
+
+[node name="up_card_proto2" parent="Card_choice" instance=ExtResource("2_13ocl")]
+position = Vector2(116, 16)
+title = "validate"
+icon_index = 8
+
+[node name="up_card_proto3" parent="Card_choice" instance=ExtResource("2_13ocl")]
+position = Vector2(216, 16)
+title = "Strategy"
+icon_index = 4
+
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 309.0
+offset_right = 572.0
+offset_bottom = 527.0
+text = "Still not Implemented.
+Provide Card upgrade, erase point, affect the board"
+label_settings = SubResource("LabelSettings_kk4qg")
+autowrap_mode = 2
+clip_text = true
+
+[connection signal="pressed" from="Card_choice/up_card_proto" to="." method="proto_hide"]
+[connection signal="pressed" from="Card_choice/up_card_proto2" to="." method="proto_hide"]
+[connection signal="pressed" from="Card_choice/up_card_proto3" to="." method="proto_hide"]

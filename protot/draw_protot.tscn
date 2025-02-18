@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6joxtmer5fut"]
+
+[ext_resource type="Script" path="res://protot/draw_protot.gd" id="1_0h6a8"]
+[ext_resource type="PackedScene" uid="uid://dxu85lt3cenoe" path="res://protot/card_prot.tscn" id="1_2xu42"]
+[ext_resource type="Texture2D" uid="uid://bwp7qthigvkdm" path="res://Ress/Card_Base.png" id="1_niu8u"]
+[ext_resource type="Texture2D" uid="uid://c2bt376gn5egs" path="res://Ress/Windo2.png" id="2_e5b1x"]
+[ext_resource type="Texture2D" uid="uid://cq36xmd53spvi" path="res://Ress/erase.png" id="3_5moup"]
+[ext_resource type="Texture2D" uid="uid://b2ecgwmt7qj4q" path="res://Ress/big_icon.png" id="4_he4me"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrn0j"]
+atlas = ExtResource("4_he4me")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_barju"]
+atlas = ExtResource("4_he4me")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fctgc"]
+atlas = ExtResource("4_he4me")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yp1jn"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Draw_protot" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_0h6a8")
+
+[node name="CardBase" type="Sprite2D" parent="."]
+modulate = Color(0.65, 0.32955, 0.273, 1)
+position = Vector2(151.5, 85.25)
+scale = Vector2(4.04688, 1.08984)
+texture = ExtResource("1_niu8u")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 296.0
+offset_bottom = 275.0
+texture = ExtResource("2_e5b1x")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Card_1" parent="." instance=ExtResource("1_2xu42")]
+position = Vector2(39.5, 21)
+card_name = "Laundry"
+icon_frame = 5
+energ_cost = -2
+money_cost = 0
+
+[node name="Card_2" parent="." instance=ExtResource("1_2xu42")]
+position = Vector2(119.5, 21)
+card_name = "shop"
+icon_frame = 2
+energ_cost = 0
+money_cost = 0
+
+[node name="Card_3" parent="." instance=ExtResource("1_2xu42")]
+position = Vector2(199.5, 21)
+card_name = "clean"
+icon_frame = 3
+energ_cost = -2
+money_cost = 0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 235.0
+offset_top = 216.0
+offset_right = 299.0
+offset_bottom = 280.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("3_5moup")
+texture_pressed = ExtResource("3_5moup")
+texture_hover = ExtResource("3_5moup")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+visible = false
+offset_left = 290.5
+offset_top = 69.0
+offset_right = 354.5
+offset_bottom = 133.0
+scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("AtlasTexture_yrn0j")
+texture_pressed = SubResource("AtlasTexture_barju")
+texture_hover = SubResource("AtlasTexture_fctgc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 155.0
+offset_right = 289.0
+offset_bottom = 270.0
+text = "Choose a task to erase before planning them for the week."
+label_settings = SubResource("LabelSettings_yp1jn")
+autowrap_mode = 2
+
+[connection signal="pressed" from="Card_1" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="Card_2" to="." method="_on_card_2_pressed"]
+[connection signal="pressed" from="Card_3" to="." method="_on_card_3_pressed"]
