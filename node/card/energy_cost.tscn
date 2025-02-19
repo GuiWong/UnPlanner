@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://q6keme8dslu6"]
+
+[ext_resource type="LabelSettings" uid="uid://cd0oq62n0y6aw" path="res://sabel_setting/Energy_cost.tres" id="1_exhgy"]
+[ext_resource type="Script" path="res://node/card/cost_shower.gd" id="1_kjeip"]
+[ext_resource type="Texture2D" uid="uid://0lmtcewme1ta" path="res://Ress/coor_icon.png" id="2_in1m7"]
+
+[node name="Energy_Cost" type="Node2D"]
+script = ExtResource("1_kjeip")
+
+[node name="Label" type="Label" parent="."]
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 11.0
+text = "- 4"
+label_settings = ExtResource("1_exhgy")
+
+[node name="Ress_Icon" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("2_in1m7")
+vframes = 2

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://be3lupeaoqobr"]
+
+[ext_resource type="Texture2D" uid="uid://bwp7qthigvkdm" path="res://Ress/Card_Base.png" id="1_2ckyj"]
+[ext_resource type="Script" path="res://node/card/card_base.gd" id="1_6u8yn"]
+[ext_resource type="Texture2D" uid="uid://cp2ow3t3qqu03" path="res://Ress/ard_active.png" id="2_6hjih"]
+[ext_resource type="Texture2D" uid="uid://cb2fuk118w6jm" path="res://Ress/Icons2.png" id="3_he21i"]
+[ext_resource type="LabelSettings" uid="uid://d0nprmbgxxvcw" path="res://sabel_setting/Card_Title.tres" id="3_nhwem"]
+[ext_resource type="Texture2D" uid="uid://bbxk3do1744ew" path="res://Ress/tag_icon.png" id="6_17gwd"]
+[ext_resource type="PackedScene" uid="uid://q6keme8dslu6" path="res://node/card/energy_cost.tscn" id="6_44f56"]
+[ext_resource type="PackedScene" uid="uid://bvgcml5ksuvpm" path="res://node/card/money_cost.tscn" id="7_1cqae"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhodo"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="Card_Base" type="Node2D"]
+script = ExtResource("1_6u8yn")
+
+[node name="Back" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_2ckyj")
+texture_pressed = ExtResource("1_2ckyj")
+texture_hover = ExtResource("2_6hjih")
+
+[node name="Card_Name" type="Label" parent="."]
+offset_right = 62.0
+offset_bottom = 23.0
+text = "Name"
+label_settings = ExtResource("3_nhwem")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card_Icon" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("3_he21i")
+hframes = 3
+vframes = 3
+
+[node name="Costs" type="Node2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="Energy_Cost" parent="Costs" instance=ExtResource("6_44f56")]
+position = Vector2(8, 0)
+
+[node name="Money_cost" parent="Costs" instance=ExtResource("7_1cqae")]
+position = Vector2(8, 16)
+
+[node name="Tags" type="Node2D" parent="."]
+position = Vector2(0, 104)
+
+[node name="Label" type="Label" parent="Tags"]
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 62.0
+offset_bottom = 24.0
+text = "2"
+label_settings = SubResource("LabelSettings_bhodo")
+
+[node name="Label2" type="Label" parent="Tags"]
+offset_left = 28.0
+offset_top = 4.0
+offset_right = 42.0
+offset_bottom = 24.0
+text = "1
+"
+label_settings = SubResource("LabelSettings_bhodo")
+
+[node name="TagIcon" type="Sprite2D" parent="Tags"]
+position = Vector2(52, -1)
+texture = ExtResource("6_17gwd")
+hframes = 2
+vframes = 2
+
+[node name="TagIcon2" type="Sprite2D" parent="Tags"]
+position = Vector2(32, -1)
+texture = ExtResource("6_17gwd")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="TagIcon3" type="Sprite2D" parent="Tags"]
+visible = false
+position = Vector2(12, -1)
+texture = ExtResource("6_17gwd")
+hframes = 2
+vframes = 2
+frame = 1

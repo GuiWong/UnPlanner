@@ -1,34 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://xnqmokdbhygb"]
+[gd_scene load_steps=2 format=3 uid="uid://xnqmokdbhygb"]
 
 [ext_resource type="Script" path="res://node/ui/card_holder.gd" id="1_fop0d"]
-[ext_resource type="PackedScene" uid="uid://dxu85lt3cenoe" path="res://protot/card_prot.tscn" id="1_is7vh"]
 
 [node name="Card_Holder" type="Node2D"]
 script = ExtResource("1_fop0d")
 
 [node name="Cards" type="Node2D" parent="."]
 position = Vector2(8, 8)
-
-[node name="CardProt" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt2" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt3" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt4" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt5" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt6" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt7" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt8" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt9" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt10" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt11" parent="Cards" instance=ExtResource("1_is7vh")]
-
-[node name="CardProt12" parent="Cards" instance=ExtResource("1_is7vh")]
