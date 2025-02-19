@@ -133,6 +133,7 @@ region_enabled = true
 region_rect = Rect2(0, 32, 64, 32)
 
 [node name="Window" parent="." instance=ExtResource("6_a8r8d")]
+visible = false
 position = Vector2(608, 112)
 
 [connection signal="timeout" from="Timer" to="." method="next_step"]

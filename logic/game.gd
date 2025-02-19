@@ -5,10 +5,11 @@ extends Node2D
 
 var energy = 10
 var money = 0
-var day = -1
+var day = 0
 var month = 0
 
 var state = State.time.MORNING
+var solve_state = State.solve.NONE
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,10 +56,36 @@ func _process(delta):
 	
 #-----------Steps / Time Based -------------
 
+
+func next_solve_step():
+	
+	match solve_state:
+		
+		State.solve.SOLVE_LOAD:
+			
+			
+			load_solve_card()
+			
+			
+		State.solve.SOLVE_PAY:
+			
+			pay_solve_card()
+			
+		State.solve.SOLVE_DISPOSE:
+			
+			dispose_solve_card()
+
 func next_step():
 	
 	
-	print(str(day) +"  -  " +str(state))
+	
+	if solve_state != State.solve.NONE:
+	
+		next_solve_step()
+		return 0
+	
+	print( "Day: " +str(day) +"  [  " +str(state) + " - "+ str(solve_state))
+	print("money: "+ str(money) + " | Energy: "+str(energy))
 	
 	match state:
 		
@@ -109,6 +136,11 @@ func solve_day():
 	
 	#---------  Start the solving chain, set solve_state
 	
+	#TODO: getters/setters!!!!
+	if $Board/Board_Data.board[day] != 0:
+		
+		solve_state = State.solve.SOLVE_LOAD
+	
 	state = State.time.EVENING
 	
 func end_day():
@@ -158,3 +190,29 @@ func load_initial_state():
 	
 	
 #-------------Card Based ---------------
+
+
+#Solving_functions
+
+func load_solve_card():
+	
+	var caardd = get_node("Board/Played_cards/card_"+str($Board/Board_Data.board[day]))
+	caardd.reparent($Desk/Focus_point,false)
+				
+	solve_state = State.solve.SOLVE_PAY
+	
+func pay_solve_card():
+	
+	money += $Card_catalog.card[$Board/Board_Data.board[day]].money_cost
+	energy += $Card_catalog.card[$Board/Board_Data.board[day]].energy_cost
+	
+	solve_state = State.solve.SOLVE_DISPOSE
+	
+func dispose_solve_card():
+	
+	#Need to handle deck replacement!!!
+	
+	#TODO:  Better access to cardand card data!
+	get_node("Desk/Focus_point").get_child(0).reparent($Window/Card_Holder/Cards,false)
+	
+	solve_state = State.solve.NONE
