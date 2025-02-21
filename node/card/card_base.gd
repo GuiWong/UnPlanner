@@ -1,14 +1,27 @@
 extends Node2D
 
 
+signal pressed(node)
+
+var card_id = 0
+var stored_in = State.stored_in.NONE
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 
+func emit_pressed():
+	
+	emit_signal("pressed",self)
+
+func set_card_storage(where):
+	
+	stored_in = where
+
 func build_from_data(card_o):
 	
+	card_id =card_o.card_id
 	$Card_Name.text = card_o.card_name
 	$Card_Icon.frame = card_o.icon_id
 	
@@ -30,7 +43,7 @@ func build_from_data(card_o):
 		
 		$Tags/Label2.text = str(card_o.weekly_value)
 		
-	$Tags/Label.text = str(card_o.discard_timer_base)
+	$Tags/Label.text = str(card_o.timer_value)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

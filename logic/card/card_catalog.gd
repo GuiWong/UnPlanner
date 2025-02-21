@@ -3,6 +3,8 @@ extends Node2D
 
 class Card:
 	
+	
+	var card_id = 0
 	var card_name ="name"
 	var icon_id = 4
 	var energy_cost = 0
@@ -22,8 +24,9 @@ class Card:
 	var solved = 0
 	var discarded = 0
 	
-	func _init(named,icon,energy,money,week=0,month=0,timer=0,effect =0,erase = 0):
+	func _init(id,named,icon,energy,money,week=0,month=0,timer=0,effect =0,erase = 0):
 		
+		self.card_id=id
 		self.card_name=named
 		self.icon_id = icon
 		self.energy_cost = energy
@@ -31,6 +34,7 @@ class Card:
 		self.weekly_value=week
 		self.month_wait=month
 		self.discard_timer_base = timer
+		self.timer_value = timer
 		
 		self.solve_effect = effect
 		self.erase_effect = erase
@@ -51,23 +55,23 @@ func _ready():
 
 func initialize():
 	
-	card.append(Card.new("Dummy",8,0,0,0,0))
-	card.append(Card.new("work",0,-3,20,1,0))
-	card.append(Card.new("work",0,-3,20,1,0))
-	card.append(Card.new("therapy",4,0,0,2,0,0,1,0))
-	card.append(Card.new("Shop",2,0,0,0,0,1,2,0))
-	card.append(Card.new("bills",2,-2,-50,0,1, 0 , 0 , 0))
+	card.append(Card.new(0,"Dummy",8,0,0,0,0))
+	card.append(Card.new(1,"work",0,-3,20,1,0))
+	card.append(Card.new(2,"work",0,-3,20,1,0))
+	card.append(Card.new(3,"therapy",4,0,0,2,0,0,1,0))
+	card.append(Card.new(4,"Shop",2,0,0,0,0,1,2,0))
+	card.append(Card.new(5,"bills",2,-2,-50,0,1, 0 , 0 , 0))
 	
 						#name,       icon,    
 						#			|			Weekly
 						#			|	Energy	  | Monthly
 						#			|	  | money |  |  Timer
-	card.append(Card.new("laundry",  5,  -2,  0,  0,  0,  1))
-	card.append(Card.new("clean",    3,  -2,  0,  0,  0,  1))
-	card.append(Card.new("paperwork",6,  -2,  0,  0,  0,  2))
+	card.append(Card.new(6,"laundry",  5,  -2,  0,  0,  0,  1))
+	card.append(Card.new(7,"clean",    3,  -2,  0,  0,  0,  1))
+	card.append(Card.new(8,"paperwork",6,  -2,  0,  0,  0,  2))
 	
-	card.append(Card.new("party",    4,   2,-15,  0,  0,  2))
-	card.append(Card.new("takeout",  4,   1,-10,  0,  0,  0))
+	card.append(Card.new(9,"party",    4,   2,-15,  0,  0,  2))
+	card.append(Card.new(10,"takeout",  4,   1,-10,  0,  0,  0))
 	
 
 func _process(delta):

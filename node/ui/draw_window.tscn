@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ej2k1i7xfg3"]
+
+[ext_resource type="PackedScene" uid="uid://biwv0ixy1qxuj" path="res://node/ui/window.tscn" id="1_7yoo7"]
+
+[node name="Draw_window" instance=ExtResource("1_7yoo7")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_bottom = 496.0
+
+[node name="Card_Holder" parent="." index="2"]
+position = Vector2(24, 16)
+
+[node name="Label" parent="." index="3"]
+text = "
+Choose wich task to postpone"

@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://mfc6wjtxpa4i"]
+
+[ext_resource type="Texture2D" uid="uid://brd8agl00lewf" path="res://Textures/Time_Butt_base.tres" id="1_b0d0a"]
+[ext_resource type="Texture2D" uid="uid://bs8q5kfuubsh5" path="res://Ress/time_button.png" id="2_kcrdw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7hxdj"]
+load_path = "res://.godot/imported/time_button.png-bee630034ae8fc8bd4d2d3366bf6cac8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6lc2"]
+atlas = SubResource("CompressedTexture2D_7hxdj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2vga"]
+atlas = ExtResource("1_b0d0a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm7hu"]
+atlas = ExtResource("2_kcrdw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8abg"]
+atlas = SubResource("CompressedTexture2D_7hxdj")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6f5t"]
+atlas = ExtResource("1_b0d0a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2xwg"]
+atlas = ExtResource("2_kcrdw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qync1"]
+atlas = SubResource("CompressedTexture2D_7hxdj")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2di8g"]
+atlas = ExtResource("1_b0d0a")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p550k"]
+atlas = ExtResource("2_kcrdw")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf8aj"]
+atlas = SubResource("CompressedTexture2D_7hxdj")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ac3u"]
+atlas = ExtResource("1_b0d0a")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xihp7"]
+atlas = ExtResource("2_kcrdw")
+region = Rect2(96, 96, 32, 32)
+
+[node name="Time_Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause_button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_i6lc2")
+texture_pressed = SubResource("AtlasTexture_n2vga")
+texture_hover = SubResource("AtlasTexture_gm7hu")
+
+[node name="speed_1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_p8abg")
+texture_pressed = SubResource("AtlasTexture_u6f5t")
+texture_hover = SubResource("AtlasTexture_c2xwg")
+
+[node name="speed_2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 96.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_qync1")
+texture_pressed = SubResource("AtlasTexture_2di8g")
+texture_hover = SubResource("AtlasTexture_p550k")
+
+[node name="speed_3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 128.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_tf8aj")
+texture_pressed = SubResource("AtlasTexture_0ac3u")
+texture_hover = SubResource("AtlasTexture_xihp7")

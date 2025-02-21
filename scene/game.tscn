@@ -1,25 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch1sw82aio2y5"]
+[gd_scene load_steps=17 format=3 uid="uid://ch1sw82aio2y5"]
 
 [ext_resource type="Script" path="res://logic/game.gd" id="1_l0rx2"]
 [ext_resource type="Script" path="res://logic/card/card_catalog.gd" id="2_d42p8"]
-[ext_resource type="Texture2D" uid="uid://bqcbg2pi1blyy" path="res://Ress/monthprot.png" id="2_epgqn"]
 [ext_resource type="Script" path="res://logic/board_data.gd" id="3_drjwv"]
+[ext_resource type="Script" path="res://logic/deck.gd" id="3_ej05m"]
 [ext_resource type="Texture2D" uid="uid://c2bt376gn5egs" path="res://Ress/Windo2.png" id="3_svdt8"]
-[ext_resource type="Texture2D" uid="uid://bh12cbs1go44b" path="res://Ress/time_control.png" id="6_7t0fe"]
-[ext_resource type="PackedScene" uid="uid://biwv0ixy1qxuj" path="res://node/ui/window.tscn" id="6_a8r8d"]
+[ext_resource type="Texture2D" uid="uid://e4qwmb2yj3bl" path="res://Ress/month_back.png" id="4_3t3cr"]
+[ext_resource type="Texture2D" uid="uid://bpnehpmnegt42" path="res://Ress/confirm_but.png" id="6_5om11"]
 [ext_resource type="Texture2D" uid="uid://cq36xmd53spvi" path="res://Ress/erase.png" id="6_lewev"]
+[ext_resource type="Texture2D" uid="uid://bwp7qthigvkdm" path="res://Ress/Card_Base.png" id="7_skdq3"]
 [ext_resource type="Texture2D" uid="uid://b2ecgwmt7qj4q" path="res://Ress/big_icon.png" id="7_xqfcy"]
+[ext_resource type="Texture2D" uid="uid://cp2ow3t3qqu03" path="res://Ress/ard_active.png" id="8_18510"]
+[ext_resource type="PackedScene" uid="uid://c7u81w8a5q1me" path="res://node/ui/energy_ui.tscn" id="8_nvwgb"]
+[ext_resource type="PackedScene" uid="uid://cuu4xi6046ro2" path="res://node/ui/Money_ui.tscn" id="9_nvkl1"]
+[ext_resource type="PackedScene" uid="uid://bs2fv6dv4x3d4" path="res://node/ui/time_control.tscn" id="10_75qm5"]
+[ext_resource type="PackedScene" uid="uid://c5ej2k1i7xfg3" path="res://node/ui/draw_window.tscn" id="13_124k4"]
+[ext_resource type="PackedScene" uid="uid://b1ayxn54e8rnx" path="res://node/ui/deck_window.tscn" id="14_wgelt"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l0rx2")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="Anchors" type="Node2D" parent="."]
 
 [node name="Card_catalog" type="Node2D" parent="."]
 script = ExtResource("2_d42p8")
+
+[node name="Deck" type="Node2D" parent="."]
+script = ExtResource("3_ej05m")
+
+[node name="Discard" type="Node2D" parent="."]
+script = ExtResource("3_ej05m")
 
 [node name="Board" type="Node2D" parent="."]
 position = Vector2(8, 112)
@@ -28,22 +42,50 @@ position = Vector2(8, 112)
 script = ExtResource("3_drjwv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Board"]
-texture = ExtResource("2_epgqn")
+texture = ExtResource("4_3t3cr")
 centered = false
 
 [node name="Played_cards" type="Node2D" parent="Board"]
+position = Vector2(4, 0)
+
+[node name="Day_marker" type="Node2D" parent="Board"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Board/Day_marker"]
+texture = ExtResource("6_5om11")
+centered = false
 
 [node name="Desk" type="Node2D" parent="."]
 position = Vector2(616, 112)
 
 [node name="Focus_point" type="Node2D" parent="Desk"]
+z_index = 100
 position = Vector2(150, 300)
+scale = Vector2(2, 2)
+
+[node name="Deck_UI" type="Node2D" parent="Desk"]
+position = Vector2(34, 330)
+scale = Vector2(2, 2)
+
+[node name="Deck" type="TextureButton" parent="Desk/Deck_UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("7_skdq3")
+texture_hover = ExtResource("8_18510")
+
+[node name="Discard" type="TextureButton" parent="Desk/Deck_UI"]
+offset_left = 131.0
+offset_top = -0.5
+offset_right = 195.0
+offset_bottom = 127.5
+texture_normal = ExtResource("7_skdq3")
+texture_hover = ExtResource("8_18510")
 
 [node name="Ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1281.0
 offset_bottom = 720.0
+mouse_filter = 2
 
 [node name="Top_Bar" type="Control" parent="Ui"]
 anchors_preset = 0
@@ -69,6 +111,21 @@ layout_mode = 0
 offset_left = 860.0
 offset_top = 16.0
 offset_right = 1064.0
+offset_bottom = 99.0
+texture = ExtResource("3_svdt8")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="Ui/Top_Bar"]
+modulate = Color(0.960784, 0.65098, 0.537255, 1)
+layout_mode = 0
+offset_left = 481.0
+offset_top = 16.0
+offset_right = 757.0
 offset_bottom = 99.0
 texture = ExtResource("3_svdt8")
 patch_margin_left = 8
@@ -104,36 +161,31 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(0, 64, 128, 64)
 
+[node name="Energy_Ui" parent="Ui/Top_Bar" instance=ExtResource("8_nvwgb")]
+position = Vector2(16, 16)
+
+[node name="Money_Ui" parent="Ui/Top_Bar" instance=ExtResource("9_nvkl1")]
+position = Vector2(313, 17)
+
 [node name="Time_Buttons" type="Node2D" parent="Ui"]
-modulate = Color(0, 0.470588, 0.666667, 1)
 position = Vector2(0, 8)
 
-[node name="TimeControl" type="Sprite2D" parent="Ui/Time_Buttons"]
-position = Vector2(640, 48)
-scale = Vector2(3, 3)
-texture = ExtResource("6_7t0fe")
-hframes = 2
-region_enabled = true
-region_rect = Rect2(64, 0, 64, 32)
+[node name="Time_Control" parent="Ui/Time_Buttons" instance=ExtResource("10_75qm5")]
+offset_left = 491.0
+offset_top = 16.0
+offset_right = 616.0
+offset_bottom = 50.0
+scale = Vector2(2, 2)
 
-[node name="TimeControl3" type="Sprite2D" parent="Ui/Time_Buttons"]
-position = Vector2(544, 48)
-scale = Vector2(3, 3)
-texture = ExtResource("6_7t0fe")
-hframes = 2
-region_enabled = true
-region_rect = Rect2(0, 0, 64, 32)
+[node name="Window" parent="." instance=ExtResource("14_wgelt")]
+position = Vector2(612, 20)
 
-[node name="TimeControl2" type="Sprite2D" parent="Ui/Time_Buttons"]
-position = Vector2(736, 48)
-scale = Vector2(3, 3)
-texture = ExtResource("6_7t0fe")
-hframes = 2
-region_enabled = true
-region_rect = Rect2(0, 32, 64, 32)
-
-[node name="Window" parent="." instance=ExtResource("6_a8r8d")]
+[node name="Draw_window" parent="." instance=ExtResource("13_124k4")]
 visible = false
-position = Vector2(608, 112)
+position = Vector2(610, 120)
 
 [connection signal="timeout" from="Timer" to="." method="next_step"]
+[connection signal="pressed" from="Desk/Deck_UI/Deck" to="." method="open_deck"]
+[connection signal="pressed" from="Desk/Deck_UI/Discard" to="." method="open_discard"]
+[connection signal="pressed" from="Ui/Time_Buttons/Time_Control" to="." method="set_speed"]
+[connection signal="close" from="Window" to="." method="close_deck_window"]

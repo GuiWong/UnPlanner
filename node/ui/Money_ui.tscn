@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuu4xi6046ro2"]
+
+[ext_resource type="Script" path="res://node/ui/money_ui.gd" id="1_0bxau"]
+[ext_resource type="Texture2D" uid="uid://c2bt376gn5egs" path="res://Ress/Windo2.png" id="1_13edu"]
+[ext_resource type="Texture2D" uid="uid://0lmtcewme1ta" path="res://Ress/coor_icon.png" id="2_3bfox"]
+[ext_resource type="LabelSettings" uid="uid://qw267ileuk5d" path="res://sabel_setting/Money_Cost.tres" id="3_h582c"]
+
+[node name="Money_Ui" type="Node2D"]
+script = ExtResource("1_0bxau")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+modulate = Color(0.960784, 0.65098, 0.537255, 1)
+offset_right = 300.0
+offset_bottom = 83.0
+texture = ExtResource("1_13edu")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(90, 40)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3bfox")
+vframes = 2
+frame = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_right = 19.0
+offset_bottom = 25.0
+text = "0
+"
+label_settings = ExtResource("3_h582c")
+horizontal_alignment = 1
+vertical_alignment = 1
